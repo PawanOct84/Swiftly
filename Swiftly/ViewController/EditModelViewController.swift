@@ -111,7 +111,7 @@ class EditModelViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)  {
         var result = "\n"
-        result += generateUIModels()
+        result += generateCodableModels()
         result += generateUIModels()
         result += generateUIViewModels()
         print("result",result)
