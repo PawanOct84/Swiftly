@@ -10,6 +10,7 @@
 		6E5E26EEBC7F378B42A1BEF6 /* Pods_Swiftly_SwiftlyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B68E2F02520528D62C8D07D9 /* Pods_Swiftly_SwiftlyUITests.framework */; };
 		73D34F7521C016E729FEBBE6 /* Pods_SwiftlyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F7F84C0E3D48D786917E1D1 /* Pods_SwiftlyTests.framework */; };
 		BD8869AF27E7BE1E001442F3 /* AttributeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8869AE27E7BE1E001442F3 /* AttributeCell.swift */; };
+		BD8869B127E9A2A8001442F3 /* TermsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8869B027E9A2A8001442F3 /* TermsVC.swift */; };
 		D365C8A058B6FD6645E3521B /* Pods_Swiftly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFDED70EE6DCD526FE61114 /* Pods_Swiftly.framework */; };
 		D4B10BA327E798CD001D93CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B10BA227E798CD001D93CB /* AppDelegate.swift */; };
 		D4B10BA527E798CD001D93CB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B10BA427E798CD001D93CB /* SceneDelegate.swift */; };
@@ -78,6 +79,7 @@
 		97E9AE2FDA056AE66D91DE31 /* Pods-Swiftly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swiftly.debug.xcconfig"; path = "Target Support Files/Pods-Swiftly/Pods-Swiftly.debug.xcconfig"; sourceTree = "<group>"; };
 		B68E2F02520528D62C8D07D9 /* Pods_Swiftly_SwiftlyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swiftly_SwiftlyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD8869AE27E7BE1E001442F3 /* AttributeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributeCell.swift; sourceTree = "<group>"; };
+		BD8869B027E9A2A8001442F3 /* TermsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsVC.swift; sourceTree = "<group>"; };
 		D4B10B9F27E798CD001D93CB /* Swiftly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swiftly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4B10BA227E798CD001D93CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4B10BA427E798CD001D93CB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				D4B10BD727E79A18001D93CB /* ReportsViewController.swift */,
 				D4B10BDA27E79A18001D93CB /* SceneDelegate.swift */,
 				D4B10BD327E79A18001D93CB /* SettingViewController.swift */,
+				BD8869B027E9A2A8001442F3 /* TermsVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -576,6 +579,7 @@
 				D4B10C0B27E79A43001D93CB /* ModelComponent.swift in Sources */,
 				D4B10BDC27E79A18001D93CB /* AboutusVC.swift in Sources */,
 				D4B10C0927E79A43001D93CB /* MultipleModelGenerator.swift in Sources */,
+				BD8869B127E9A2A8001442F3 /* TermsVC.swift in Sources */,
 				D4B10C0527E79A43001D93CB /* ModalGenerator.swift in Sources */,
 				D4B10BA327E798CD001D93CB /* AppDelegate.swift in Sources */,
 				D4B10C0F27E79A43001D93CB /* JSONHelper.swift in Sources */,

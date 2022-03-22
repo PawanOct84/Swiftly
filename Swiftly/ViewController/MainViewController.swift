@@ -133,12 +133,13 @@ extension MainViewController: SideMenuViewControllerDelegate {
             self.showViewController(viewController: UINavigationController.self, storyboardId: "HomeNavID")
         case 1:
             // Tutorial
-            self.showViewController(viewController: UINavigationController.self, storyboardId: "TutorialNavID")        case 2:
-            // Movies
+            self.showViewController(viewController: UINavigationController.self, storyboardId: "TutorialNavID")
+        case 2:
+            // About us
             self.showViewController(viewController: UINavigationController.self, storyboardId: "AboutusNavID")
         case 3:
-            print("hii")
-            self.showViewController(viewController: UINavigationController.self, storyboardId: "AboutusNavID")
+            // Terms of use
+            self.showViewController(viewController: UINavigationController.self, storyboardId: "TermOfUseNavID")
             // Books
            // self.showViewController(viewController: BooksViewController.self, storyboardId: "BooksVCID")
         case 4:
