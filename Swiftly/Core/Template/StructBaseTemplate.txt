@@ -7,7 +7,7 @@
 
 import Foundation
 
-public {OBJECT_KIND} {OBJECT_NAME}UIModel {
+public Struct {OBJECT_NAME}UIModel {
 
     {DECLARATION}
 }
