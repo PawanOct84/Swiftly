@@ -23,6 +23,9 @@ class PropertyComponent {
     /// variablesOptional
     var variablesOptional: Bool
     
+    /// Class Contains
+    var shouldContains: Bool
+    
     /// Initialise a property component.
     ///
     /// - Parameters:
@@ -31,12 +34,13 @@ class PropertyComponent {
     ///   - constantName: Constant name that is to be used to encode, decode and read from JSON.
     ///   - key: Original key in the JSON file.
     ///   - propertyType: Nature of the property, if it is a value type, an array of a value type or an object.
-    init(_ name: String, _ type: String, _ constantName: String, _ key: String, _ propertyType: PropertyType, _ variablesOptional: Bool) {
+    init(_ name: String, _ type: String, _ constantName: String, _ key: String, _ propertyType: PropertyType, _ variablesOptional: Bool,  _ shouldContains: Bool) {
         self.name = name
         self.type = type
         self.constantName = constantName
         self.key = key
         self.propertyType = propertyType
         self.variablesOptional = variablesOptional
+        self.shouldContains = shouldContains
     }
 }

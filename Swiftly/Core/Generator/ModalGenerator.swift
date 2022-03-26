@@ -73,7 +73,7 @@ public struct ModelGenerator {
                 switch variableType {
                 case .array:
                     if value.arrayValue.isEmpty {
-                        currentModel.generateAndAddComponentsFor(PropertyComponent(variableName, VariableType.array.rawValue, stringConstantName, key, .emptyArray, configuration.variablesOptional))
+                        currentModel.generateAndAddComponentsFor(PropertyComponent(variableName, VariableType.array.rawValue, stringConstantName, key, .emptyArray, configuration.variablesOptional, true))
                     } else {
                         let subClassType = value.arrayValue.first!.detailedValueType()
                         if subClassType == .object {
@@ -81,21 +81,21 @@ public struct ModelGenerator {
                             modelFiles += models
                             let model = models.first
                             let classname = model?.fileName
-                            currentModel.generateAndAddComponentsFor(PropertyComponent(variableName, classname!, stringConstantName, key, .objectTypeArray, configuration.variablesOptional))
+                            currentModel.generateAndAddComponentsFor(PropertyComponent(variableName, classname!, stringConstantName, key, .objectTypeArray, configuration.variablesOptional, true))
                         } else {
-                            currentModel.generateAndAddComponentsFor(PropertyComponent(variableName, subClassType.rawValue, stringConstantName, key, .valueTypeArray, configuration.variablesOptional))
+                            currentModel.generateAndAddComponentsFor(PropertyComponent(variableName, subClassType.rawValue, stringConstantName, key, .valueTypeArray, configuration.variablesOptional, true))
                         }
                     }
                 case .object:
                     var models = generateModelForJSON(value, variableName, false)
                     let model = models.first
                     let typeName = model?.fileName
-                    currentModel.generateAndAddComponentsFor(PropertyComponent(variableName, typeName!, stringConstantName, key, .objectType, configuration.variablesOptional))
+                    currentModel.generateAndAddComponentsFor(PropertyComponent(variableName, typeName!, stringConstantName, key, .objectType, configuration.variablesOptional, true))
                     modelFiles += models
                 case .null:
-                    currentModel.generateAndAddComponentsFor(PropertyComponent(variableName, VariableType.null.rawValue, stringConstantName, key, .nullType, configuration.variablesOptional))
+                    currentModel.generateAndAddComponentsFor(PropertyComponent(variableName, VariableType.null.rawValue, stringConstantName, key, .nullType, configuration.variablesOptional, true))
                 default:
-                    currentModel.generateAndAddComponentsFor(PropertyComponent(variableName, variableType.rawValue, stringConstantName, key, .valueType, configuration.variablesOptional))
+                    currentModel.generateAndAddComponentsFor(PropertyComponent(variableName, variableType.rawValue, stringConstantName, key, .valueType, configuration.variablesOptional, true))
                 }
             }
 
@@ -139,7 +139,7 @@ public struct ModelGenerator {
                 switch variableType {
                 case .array:
                     if value.arrayValue.isEmpty {
-                        currentModel.addComponentsFor(PropertyComponent(variableName, VariableType.array.rawValue, stringConstantName, key, .emptyArray, configuration.variablesOptional))
+                        currentModel.addComponentsFor(PropertyComponent(variableName, VariableType.array.rawValue, stringConstantName, key, .emptyArray, configuration.variablesOptional, true))
                     } else {
                         let subClassType = value.arrayValue.first!.detailedValueType()
                         if subClassType == .object {
@@ -147,21 +147,21 @@ public struct ModelGenerator {
                             modelFiles += models
                             let model = models.first
                             let classname = model?.fileName
-                            currentModel.addComponentsFor(PropertyComponent(variableName, classname!, stringConstantName, key, .objectTypeArray, configuration.variablesOptional))
+                            currentModel.addComponentsFor(PropertyComponent(variableName, classname!, stringConstantName, key, .objectTypeArray, configuration.variablesOptional, true))
                         } else {
-                            currentModel.addComponentsFor(PropertyComponent(variableName, subClassType.rawValue, stringConstantName, key, .valueTypeArray, configuration.variablesOptional))
+                            currentModel.addComponentsFor(PropertyComponent(variableName, subClassType.rawValue, stringConstantName, key, .valueTypeArray, configuration.variablesOptional, true))
                         }
                     }
                 case .object:
                     var models = addModelForJSON(value, variableName, false)
                     var model = models.first
                     let typeName = model?.fileName
-                    currentModel.addComponentsFor(PropertyComponent(variableName, typeName!, stringConstantName, key, .objectType, configuration.variablesOptional))
+                    currentModel.addComponentsFor(PropertyComponent(variableName, typeName!, stringConstantName, key, .objectType, configuration.variablesOptional, true))
                     modelFiles += models
                 case .null:
-                    currentModel.addComponentsFor(PropertyComponent(variableName, VariableType.null.rawValue, stringConstantName, key, .nullType, configuration.variablesOptional))
+                    currentModel.addComponentsFor(PropertyComponent(variableName, VariableType.null.rawValue, stringConstantName, key, .nullType, configuration.variablesOptional, true))
                 default:
-                    currentModel.addComponentsFor(PropertyComponent(variableName, variableType.rawValue, stringConstantName, key, .valueType, configuration.variablesOptional))
+                    currentModel.addComponentsFor(PropertyComponent(variableName, variableType.rawValue, stringConstantName, key, .valueType, configuration.variablesOptional, true))
                 }
             }
 

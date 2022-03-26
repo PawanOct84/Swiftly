@@ -151,7 +151,7 @@ extension EditModelViewController : UITableViewDelegate,UITableViewDataSource {
         
         let lbl = UILabel(frame: CGRect(x: 15, y: 0, width: view.frame.width - 15, height: 40))
         lbl.font = UIFont.systemFont(ofSize: 20)
-        lbl.text = models[section].fileName
+        lbl.text = models[section].fileName + "(\(models[section].propertyComponents?.count ?? 0))"
         lbl.textColor = UIColor.white
         view.addSubview(lbl)
         return view
@@ -185,16 +185,29 @@ extension EditModelViewController : UITableViewDelegate,UITableViewDataSource {
 
 extension EditModelViewController: AttributeCellDelegate {
     
-    func didTappedAt(cell: AttributeCell) {
+    func didTappedForOptionAt(cell: AttributeCell) {
         if let indexPath = self.tableView.indexPath(for: cell) {
             var propertyComponents = models[indexPath.section].propertyComponents ?? []
-            var data = propertyComponents[indexPath.row]
+            let data = propertyComponents[indexPath.row]
             data.variablesOptional = data.variablesOptional ? false : true
             propertyComponents[indexPath.row] = data
             
             self.tableView.reloadData()
         }
     }
+    
+    func didTappedForContainsAt(cell: AttributeCell) {
+        if let indexPath = self.tableView.indexPath(for: cell) {
+            var propertyComponents = models[indexPath.section].propertyComponents ?? []
+            let data = propertyComponents[indexPath.row]
+            data.shouldContains = data.shouldContains ? false : true
+            propertyComponents[indexPath.row] = data
+            
+            self.tableView.reloadData()  
+        }
+    }
+    
+    
     
 }
 
