@@ -27,7 +27,7 @@ class EditModelViewController: UIViewController {
     func defaultConfiguration(library: JSONMappingMethod, optional: Bool) -> ModelGenerationConfiguration {
         return ModelGenerationConfiguration(
             filePath: "/tmp/",
-            baseClassName: "BaseClass",
+            baseClassName: self.baseClassName,
             authorName: "Pawan Kumar",
             companyName: "Comviva",
             prefix: "",
@@ -116,12 +116,20 @@ class EditModelViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)  {
         var result = "\n"
-        result += generateCodableModels()
-        result += generateUIModels()
-        result += generateUIViewModels()
-        print("result",result)
-
         
+        if  isUIModel {
+            result += generateUIModels()
+        }
+        else {
+            if isRequestModel {
+                result += generateCodableModels()
+            }
+            else {
+                result += generateCodableModels()
+            }
+        }
+        //        result += generateUIViewModels()
+        print("result",result)
       if segue.identifier == "showReportView",
          let viewController = segue.destination as? ReportsViewController {
           viewController.reports = result
@@ -171,9 +179,6 @@ extension EditModelViewController : UITableViewDelegate,UITableViewDataSource {
            return 40
     }
          
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//           return 40
-//    }
 }
 
 

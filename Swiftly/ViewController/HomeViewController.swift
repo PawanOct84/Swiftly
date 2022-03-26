@@ -114,7 +114,7 @@ class HomeViewController: UIViewController {
                       viewController.isRequestModel = true
                   }
                   else {
-                      viewController.isRequestModel = true
+                      viewController.isRequestModel = false
                   }
                   viewController.isUIModel = true
 
@@ -133,7 +133,7 @@ class HomeViewController: UIViewController {
                       viewController.isRequestModel = true
                   }
                   else {
-                      viewController.isRequestModel = true
+                      viewController.isRequestModel = false
                   }
                   viewController.isUIModel = false
               }
