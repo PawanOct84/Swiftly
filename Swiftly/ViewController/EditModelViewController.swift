@@ -11,6 +11,11 @@ import SwiftyJSON
 class EditModelViewController: UIViewController {
 
     public var jsonData:JSON!
+    public var isRequestModel:Bool = false
+    public var isUIModel:Bool = false
+    public var baseClassName:String = "BaseClass"
+
+    
     @IBOutlet weak var tableView: UITableView!
     var models = [ModelFile]()
 

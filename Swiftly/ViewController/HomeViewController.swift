@@ -11,10 +11,13 @@ import Toaster
 
 class HomeViewController: UIViewController {
     @IBOutlet public var txtJsonData:UITextView!
+    @IBOutlet public var segmentControl:UISegmentedControl!
+    @IBOutlet public var txtBaseClass:UITextField!
+
     @IBOutlet var sideMenuBtn: UIBarButtonItem!
     let pasteboard = UIPasteboard.general
     var isValidJson = false
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         // Menu Button Tint Color
@@ -27,7 +30,7 @@ class HomeViewController: UIViewController {
         sideMenuBtn.target = revealViewController()
         sideMenuBtn.action = #selector(revealViewController()?.revealSideMenu)
         
-          let mySlider = UISlider(frame:CGRect(x: 10, y: self.view.frame.height - 115, width: self.view.frame.width - 40, height: 20))
+          let mySlider = UISlider(frame:CGRect(x: 10, y: self.txtJsonData.frame.height - 0, width: self.txtJsonData.frame.width - 20, height: 20))
           mySlider.minimumValue = 10
           mySlider.maximumValue = 30
           mySlider.isContinuous = true
@@ -35,11 +38,24 @@ class HomeViewController: UIViewController {
           mySlider.value = 20
           mySlider.addTarget(self, action: #selector(self.sliderValueDidChange(_:)), for: .valueChanged)
           txtJsonData.font = UIFont.systemFont(ofSize: CGFloat(mySlider.value))
-          self.view.addSubview(mySlider)
+          self.txtJsonData.addSubview(mySlider)
         pasteboard.string = self.txtJsonData.text
         self.txtJsonData.text = "Please copy json string into clipboard and click on Paste Clipboard."
+        
+        
+        // Add function to handle Value Changed events
+        segmentControl.addTarget(self, action: #selector(self.segmentedValueChanged(_:)), for: .valueChanged)
+           
+        
        }
           
+    
+    @objc func segmentedValueChanged(_ sender:UISegmentedControl!)
+        {
+            print("Selected Segment Index is : \(sender.selectedSegmentIndex)")
+        }
+        
+    
       @objc func sliderValueDidChange(_ sender:UISlider!){
           txtJsonData.font = UIFont.systemFont(ofSize: CGFloat(sender.value))
           print("Slider step value \(Int(sender.value))")
@@ -75,7 +91,7 @@ class HomeViewController: UIViewController {
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if identifier == "showGenerateModel" {
+        if identifier == "generateUIModel" ||  identifier == "generateCodableModel" {
             if !isValidJson {
                 Toast(text: "Please paste valid josn from Clipboard.").show()
                 return false
@@ -86,16 +102,43 @@ class HomeViewController: UIViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)  {
-        if segue.identifier == "showGenerateModel",
+        if segue.identifier == "generateUIModel",
          let viewController = segue.destination as? EditModelViewController {
-          ///TO DOO implement all validations like empat or bad json
           let jsonString = txtJsonData.text ?? ""
           if let data = jsonString.data(using: .utf8) {
               if let json = try? JSON(data: data) {
                   viewController.jsonData = json
+                  viewController.baseClassName = self.txtBaseClass.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "BaseClass"
+                  
+                  if self.segmentControl.selectedSegmentIndex  == 0 {
+                      viewController.isRequestModel = true
+                  }
+                  else {
+                      viewController.isRequestModel = true
+                  }
+                  viewController.isUIModel = true
+
               }
           }
-      }
+        }
+        else if segue.identifier == "generateCodableModel",
+         let viewController = segue.destination as? EditModelViewController {
+          let jsonString = txtJsonData.text ?? ""
+          if let data = jsonString.data(using: .utf8) {
+              if let json = try? JSON(data: data) {
+                  viewController.jsonData = json
+                  viewController.baseClassName = self.txtBaseClass.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "BaseClass"
+                  
+                  if self.segmentControl.selectedSegmentIndex  == 0 {
+                      viewController.isRequestModel = true
+                  }
+                  else {
+                      viewController.isRequestModel = true
+                  }
+                  viewController.isUIModel = false
+              }
+          }
+        }
     }
    
 }
