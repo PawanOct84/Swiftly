@@ -11,6 +11,7 @@
 		73D34F7521C016E729FEBBE6 /* Pods_SwiftlyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F7F84C0E3D48D786917E1D1 /* Pods_SwiftlyTests.framework */; };
 		872DA58327EF85CE004ED090 /* CodableRequestTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = 872DA58127EF85CE004ED090 /* CodableRequestTemplate.txt */; };
 		872DA58427EF85CE004ED090 /* CodableResponseTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = 872DA58227EF85CE004ED090 /* CodableResponseTemplate.txt */; };
+		872DA58627F0BF6F004ED090 /* Prefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872DA58527F0BF6F004ED090 /* Prefs.swift */; };
 		BD8869AF27E7BE1E001442F3 /* AttributeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8869AE27E7BE1E001442F3 /* AttributeCell.swift */; };
 		BD8869B127E9A2A8001442F3 /* TermsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8869B027E9A2A8001442F3 /* TermsVC.swift */; };
 		D365C8A058B6FD6645E3521B /* Pods_Swiftly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFDED70EE6DCD526FE61114 /* Pods_Swiftly.framework */; };
@@ -79,6 +80,7 @@
 		6F7F84C0E3D48D786917E1D1 /* Pods_SwiftlyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftlyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		872DA58127EF85CE004ED090 /* CodableRequestTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CodableRequestTemplate.txt; sourceTree = "<group>"; };
 		872DA58227EF85CE004ED090 /* CodableResponseTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CodableResponseTemplate.txt; sourceTree = "<group>"; };
+		872DA58527F0BF6F004ED090 /* Prefs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prefs.swift; sourceTree = "<group>"; };
 		97E9AE2FDA056AE66D91DE31 /* Pods-Swiftly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swiftly.debug.xcconfig"; path = "Target Support Files/Pods-Swiftly/Pods-Swiftly.debug.xcconfig"; sourceTree = "<group>"; };
 		B68E2F02520528D62C8D07D9 /* Pods_Swiftly_SwiftlyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swiftly_SwiftlyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD8869AE27E7BE1E001442F3 /* AttributeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributeCell.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				D4B10BD227E79992001D93CB /* ViewController */,
 				D4B10BA227E798CD001D93CB /* AppDelegate.swift */,
 				D4B10BA427E798CD001D93CB /* SceneDelegate.swift */,
+				872DA58527F0BF6F004ED090 /* Prefs.swift */,
 				D4B10BA827E798CD001D93CB /* Main.storyboard */,
 				D4B10BAB27E798CF001D93CB /* Assets.xcassets */,
 				D4B10BAD27E798CF001D93CB /* LaunchScreen.storyboard */,
@@ -576,6 +579,7 @@
 				D4B10C0627E79A43001D93CB /* FileGeneratorExtension.swift in Sources */,
 				D4B10BFF27E79A43001D93CB /* Constants.swift in Sources */,
 				D4B10C0C27E79A43001D93CB /* ModelFile.swift in Sources */,
+				872DA58627F0BF6F004ED090 /* Prefs.swift in Sources */,
 				D4B10BDE27E79A18001D93CB /* MainViewController.swift in Sources */,
 				D4E9849327E8286C00D3833F /* TutorialVC.swift in Sources */,
 				D4B10C0E27E79A43001D93CB /* StringExtensions.swift in Sources */,

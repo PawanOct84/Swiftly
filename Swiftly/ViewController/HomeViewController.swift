@@ -42,7 +42,7 @@ class HomeViewController: UIViewController {
         pasteboard.string = self.txtJsonData.text
         self.txtJsonData.text = "Please copy json string into clipboard and click on Paste Clipboard."
         
-        
+        self.txtBaseClass.text = UserDefaults.standard.baseClassName
         // Add function to handle Value Changed events
         segmentControl.addTarget(self, action: #selector(self.segmentedValueChanged(_:)), for: .valueChanged)
            
@@ -108,7 +108,11 @@ class HomeViewController: UIViewController {
           if let data = jsonString.data(using: .utf8) {
               if let json = try? JSON(data: data) {
                   viewController.jsonData = json
-                  viewController.baseClassName = self.txtBaseClass.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "BaseClass"
+                  
+                  let baseClassName = self.txtBaseClass.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+                  if baseClassName.count > 0 {
+                      UserDefaults.standard.baseClassName = baseClassName
+                  }
                   
                   if self.segmentControl.selectedSegmentIndex  == 0 {
                       viewController.isRequestModel = true
@@ -127,7 +131,11 @@ class HomeViewController: UIViewController {
           if let data = jsonString.data(using: .utf8) {
               if let json = try? JSON(data: data) {
                   viewController.jsonData = json
-                  viewController.baseClassName = self.txtBaseClass.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "BaseClass"
+                  
+                  let baseClassName = self.txtBaseClass.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+                  if baseClassName.count > 0 {
+                      UserDefaults.standard.baseClassName = baseClassName
+                  }
                   
                   if self.segmentControl.selectedSegmentIndex  == 0 {
                       viewController.isRequestModel = true
@@ -182,8 +190,6 @@ extension UITextView: UITextViewDelegate {
         if let placeholderLabel = self.viewWithTag(100) as? UILabel {
             placeholderLabel.isHidden = !self.text.isEmpty
         }
-        
-        print("textViewDidChange")
     }
     
     /// Resize the placeholder UILabel to make sure it's in the same position as the UITextView text

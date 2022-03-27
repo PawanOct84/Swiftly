@@ -13,7 +13,6 @@ class EditModelViewController: UIViewController {
     public var jsonData:JSON!
     public var isRequestModel:Bool = false
     public var isUIModel:Bool = false
-    public var baseClassName:String = "BaseClass"
 
     
     @IBOutlet weak var tableView: UITableView!
@@ -27,9 +26,9 @@ class EditModelViewController: UIViewController {
     func defaultConfiguration(library: JSONMappingMethod, optional: Bool) -> ModelGenerationConfiguration {
         return ModelGenerationConfiguration(
             filePath: "/tmp/",
-            baseClassName: self.baseClassName,
-            authorName: "Pawan Kumar",
-            companyName: "Comviva",
+            baseClassName: UserDefaults.standard.baseClassName,
+            authorName: UserDefaults.standard.autherName,
+            companyName:UserDefaults.standard.companyName,
             prefix: "",
             constructType: .structType,
             modelMappingLibrary: library,

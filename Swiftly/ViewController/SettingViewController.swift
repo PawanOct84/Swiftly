@@ -22,18 +22,28 @@ class SettingViewController: FormViewController {
         
         form +++ Section("Section1")
             <<< TextRow(){ row in
-                row.title = "BaseClassName"
-                row.placeholder = "Enter baseclass name"
-            }
+                row.title = "Base Class:"
+                row.placeholder = UserDefaults.standard.baseClassName
+            }.onChange({ text in
+                UserDefaults.standard.baseClassName = text.value!
+            })
+        
             <<< TextRow(){ row in
-                row.title = "AuthorName"
-                row.placeholder = "Enter author name"
+                row.title = "Author:"
+                row.placeholder = UserDefaults.standard.autherName
             }
+            .onChange({ text in
+                UserDefaults.standard.autherName = text.value!
+            })
+        
             <<< TextRow(){ row in
-                row.title = "CompanyName"
-                row.placeholder = "Enter company name"
-            }
-               }
+                row.title = "Company:"
+                row.placeholder = UserDefaults.standard.companyName
+            }.onChange({ text in
+                UserDefaults.standard.companyName = text.value!
+            })
+               
+    }
     
 
    
