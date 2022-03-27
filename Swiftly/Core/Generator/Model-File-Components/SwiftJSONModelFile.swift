@@ -38,6 +38,12 @@ class SwiftJSONModelFile: ModelFile {
     }
 
     func generateAndAddComponentsFor(_ property: PropertyComponent) {
+        
+        let shouldContains = property.shouldContains
+        if !shouldContains {
+            return
+        }
+
         let isOptional = property.variablesOptional
         
         let isArray = property.propertyType == .valueTypeArray || property.propertyType == .objectTypeArray

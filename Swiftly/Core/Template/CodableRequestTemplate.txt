@@ -1,0 +1,27 @@
+//
+//  {OBJECT_NAME}.swift
+//
+//  Created by __NAME__ on {DATE}
+//  Copyright (c) __MyCompanyName__. All rights reserved.
+//
+
+import Foundation
+
+{OBJECT_KIND} {OBJECT_NAME}: CoreRequestModel {
+
+  enum CodingKeys: String, CodingKey {
+{STRING_CONSTANT}
+  }
+
+{DECLARATION}
+{INITIALIZER_FUNCTION_DECLRATION}
+{INITIALISER_FUNCTION_ASSIGNMENT}
+{INITIALISER_FUNCTION_END}
+
+override func encode(to encoder: Encoder) throws {
+    var container = encoder.container(keyedBy: CodingKeys.self)
+{INITIALIZER}
+    try super.encode(to: encoder)
+  }
+
+}

@@ -45,27 +45,27 @@ class EditModelViewController: UIViewController {
         var models = ModelGenerator(jsonData, config)
         var files = models.generate()
         print("Section count",files.count)
-        print("*************************")
-        for i in 0...(files.count - 1) {
-            var file = files[i]
-            print("Section:",file.fileName)
-            print("*************************")
-            var propertyComponents = file.propertyComponents ?? []
-            for j in 0...(propertyComponents.count - 1) {
-                var data = propertyComponents[j]
-                if j % 2 == 0 {
-                    data.variablesOptional = false
-                }
-                else {
-                    data.variablesOptional = true
-                }
-                print("name:",data.name)
-                print("type:",data.type)
-                print("VariablesOptional:",data.variablesOptional)
-            }
-            print("*************************")
-        }
-        print("***********                        **************")
+//        print("*************************")
+//        for i in 0...(files.count - 1) {
+//            var file = files[i]
+//            print("Section:",file.fileName)
+//            print("*************************")
+//            var propertyComponents = file.propertyComponents ?? []
+//            for j in 0...(propertyComponents.count - 1) {
+//                var data = propertyComponents[j]
+//                if j % 2 == 0 {
+//                    data.variablesOptional = false
+//                }
+//                else {
+//                    data.variablesOptional = true
+//                }
+//                print("name:",data.name)
+//                print("type:",data.type)
+//                print("VariablesOptional:",data.variablesOptional)
+//            }
+//            print("*************************")
+//        }
+//        print("***********                        **************")
         self.models = files
         self.tableView.reloadData()
     }
@@ -78,26 +78,42 @@ class EditModelViewController: UIViewController {
         for i in 0...(self.models.count - 1) {
             var file = self.models[i]
             file.generateAllComponents()
-            let content = FileGenerator.generateStructFileContentWith(file, configuration: config)
+            let content = FileGenerator.generateUIModelFileContentWith(file, configuration: config)
             result += content
 //            print("content",content)
         }
         return result
     }
     
-    func generateCodableModels()->String {
+    func generateCodableRequestModels()->String {
         var result = "\n"
         var config = defaultConfiguration(library: .swiftNormal, optional: false)
         config.constructType = .classType
         for i in 0...(self.models.count - 1) {
             var file = self.models[i]
             file.generateAllComponents()
-            let content = FileGenerator.generateClassFileContentWith(file, configuration: config)
+            let content = FileGenerator.generateRequestCodableFileContentWith(file, configuration: config)
             result += content
 //            print("content",content)
         }
         return result
     }
+    
+    func generateCodableResponseModels()->String {
+        var result = "\n"
+        var config = defaultConfiguration(library: .swiftNormal, optional: false)
+        config.constructType = .classType
+        for i in 0...(self.models.count - 1) {
+            var file = self.models[i]
+            file.generateAllComponents()
+            let content = FileGenerator.generateResponseCodableFileContentWith(file, configuration: config)
+            result += content
+//            print("content",content)
+        }
+        return result
+    }
+     
+    
      
     
     func generateUIViewModels()->String {
@@ -122,10 +138,10 @@ class EditModelViewController: UIViewController {
         }
         else {
             if isRequestModel {
-                result += generateCodableModels()
+                result += generateCodableRequestModels()
             }
             else {
-                result += generateCodableModels()
+                result += generateCodableResponseModels()
             }
         }
         //        result += generateUIViewModels()

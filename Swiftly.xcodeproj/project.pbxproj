@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		6E5E26EEBC7F378B42A1BEF6 /* Pods_Swiftly_SwiftlyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B68E2F02520528D62C8D07D9 /* Pods_Swiftly_SwiftlyUITests.framework */; };
 		73D34F7521C016E729FEBBE6 /* Pods_SwiftlyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F7F84C0E3D48D786917E1D1 /* Pods_SwiftlyTests.framework */; };
+		872DA58327EF85CE004ED090 /* CodableRequestTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = 872DA58127EF85CE004ED090 /* CodableRequestTemplate.txt */; };
+		872DA58427EF85CE004ED090 /* CodableResponseTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = 872DA58227EF85CE004ED090 /* CodableResponseTemplate.txt */; };
 		BD8869AF27E7BE1E001442F3 /* AttributeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8869AE27E7BE1E001442F3 /* AttributeCell.swift */; };
 		BD8869B127E9A2A8001442F3 /* TermsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8869B027E9A2A8001442F3 /* TermsVC.swift */; };
 		D365C8A058B6FD6645E3521B /* Pods_Swiftly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFDED70EE6DCD526FE61114 /* Pods_Swiftly.framework */; };
@@ -28,9 +30,8 @@
 		D4B10BE027E79A18001D93CB /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B10BD827E79A18001D93CB /* Extension.swift */; };
 		D4B10BE127E79A18001D93CB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B10BD927E79A18001D93CB /* HomeViewController.swift */; };
 		D4B10BFF27E79A43001D93CB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B10BE427E79A43001D93CB /* Constants.swift */; };
-		D4B10C0027E79A43001D93CB /* StructBaseTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = D4B10BE627E79A43001D93CB /* StructBaseTemplate.txt */; };
+		D4B10C0027E79A43001D93CB /* UIModelBaseTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = D4B10BE627E79A43001D93CB /* UIModelBaseTemplate.txt */; };
 		D4B10C0127E79A43001D93CB /* BaseTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = D4B10BE727E79A43001D93CB /* BaseTemplate.txt */; };
-		D4B10C0227E79A43001D93CB /* ClassBaseTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = D4B10BE827E79A43001D93CB /* ClassBaseTemplate.txt */; };
 		D4B10C0327E79A43001D93CB /* ViewModelBaseTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = D4B10BE927E79A43001D93CB /* ViewModelBaseTemplate.txt */; };
 		D4B10C0427E79A43001D93CB /* FileGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B10BEB27E79A43001D93CB /* FileGenerator.swift */; };
 		D4B10C0527E79A43001D93CB /* ModalGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B10BEC27E79A43001D93CB /* ModalGenerator.swift */; };
@@ -76,6 +77,8 @@
 		4AA74F9389F62B2A697B427A /* Pods-SwiftlyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftlyTests.release.xcconfig"; path = "Target Support Files/Pods-SwiftlyTests/Pods-SwiftlyTests.release.xcconfig"; sourceTree = "<group>"; };
 		6C0955077A039EF4391B2B85 /* Pods-Swiftly-SwiftlyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swiftly-SwiftlyUITests.release.xcconfig"; path = "Target Support Files/Pods-Swiftly-SwiftlyUITests/Pods-Swiftly-SwiftlyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		6F7F84C0E3D48D786917E1D1 /* Pods_SwiftlyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftlyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		872DA58127EF85CE004ED090 /* CodableRequestTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CodableRequestTemplate.txt; sourceTree = "<group>"; };
+		872DA58227EF85CE004ED090 /* CodableResponseTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CodableResponseTemplate.txt; sourceTree = "<group>"; };
 		97E9AE2FDA056AE66D91DE31 /* Pods-Swiftly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swiftly.debug.xcconfig"; path = "Target Support Files/Pods-Swiftly/Pods-Swiftly.debug.xcconfig"; sourceTree = "<group>"; };
 		B68E2F02520528D62C8D07D9 /* Pods_Swiftly_SwiftlyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swiftly_SwiftlyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD8869AE27E7BE1E001442F3 /* AttributeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributeCell.swift; sourceTree = "<group>"; };
@@ -101,9 +104,8 @@
 		D4B10BD927E79A18001D93CB /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D4B10BDA27E79A18001D93CB /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D4B10BE427E79A43001D93CB /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		D4B10BE627E79A43001D93CB /* StructBaseTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StructBaseTemplate.txt; sourceTree = "<group>"; };
+		D4B10BE627E79A43001D93CB /* UIModelBaseTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UIModelBaseTemplate.txt; sourceTree = "<group>"; };
 		D4B10BE727E79A43001D93CB /* BaseTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BaseTemplate.txt; sourceTree = "<group>"; };
-		D4B10BE827E79A43001D93CB /* ClassBaseTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ClassBaseTemplate.txt; sourceTree = "<group>"; };
 		D4B10BE927E79A43001D93CB /* ViewModelBaseTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ViewModelBaseTemplate.txt; sourceTree = "<group>"; };
 		D4B10BEB27E79A43001D93CB /* FileGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileGenerator.swift; sourceTree = "<group>"; };
 		D4B10BEC27E79A43001D93CB /* ModalGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalGenerator.swift; sourceTree = "<group>"; };
@@ -262,9 +264,10 @@
 		D4B10BE527E79A43001D93CB /* Template */ = {
 			isa = PBXGroup;
 			children = (
-				D4B10BE627E79A43001D93CB /* StructBaseTemplate.txt */,
+				872DA58127EF85CE004ED090 /* CodableRequestTemplate.txt */,
+				872DA58227EF85CE004ED090 /* CodableResponseTemplate.txt */,
+				D4B10BE627E79A43001D93CB /* UIModelBaseTemplate.txt */,
 				D4B10BE727E79A43001D93CB /* BaseTemplate.txt */,
-				D4B10BE827E79A43001D93CB /* ClassBaseTemplate.txt */,
 				D4B10BE927E79A43001D93CB /* ViewModelBaseTemplate.txt */,
 			);
 			path = Template;
@@ -432,14 +435,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4B10C0027E79A43001D93CB /* StructBaseTemplate.txt in Resources */,
+				D4B10C0027E79A43001D93CB /* UIModelBaseTemplate.txt in Resources */,
 				D4B10BAF27E798CF001D93CB /* LaunchScreen.storyboard in Resources */,
 				D4B10BAC27E798CF001D93CB /* Assets.xcassets in Resources */,
 				D4B10C1227E79A43001D93CB /* SideMenuCell.xib in Resources */,
 				D4B10C0327E79A43001D93CB /* ViewModelBaseTemplate.txt in Resources */,
 				D4B10BAA27E798CD001D93CB /* Main.storyboard in Resources */,
-				D4B10C0227E79A43001D93CB /* ClassBaseTemplate.txt in Resources */,
+				872DA58427EF85CE004ED090 /* CodableResponseTemplate.txt in Resources */,
 				D4B10C0127E79A43001D93CB /* BaseTemplate.txt in Resources */,
+				872DA58327EF85CE004ED090 /* CodableRequestTemplate.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,9 +9,10 @@
 import Foundation
 
 extension FileGenerator {
-    static func generateFileContentWith(_ modelFile: ModelFile, configuration: ModelGenerationConfiguration) -> String {
-        var content = try! loadFileWith("BaseTemplate")
-        let singleTab = "  ", doubleTab = "    "
+
+    static func generateRequestCodableFileContentWith(_ modelFile: ModelFile, configuration: ModelGenerationConfiguration) -> String {
+        var content = try! loadFileWith("CodableRequestTemplate")
+        let singleTab = "  ", doubleTab = "    ", newLine = "\n"
         content = content.replacingOccurrences(of: "{OBJECT_NAME}", with: modelFile.fileName)
         content = content.replacingOccurrences(of: "{DATE}", with: todayDateString())
         content = content.replacingOccurrences(of: "{OBJECT_KIND}", with: modelFile.type.rawValue)
@@ -25,7 +26,12 @@ extension FileGenerator {
 
         let stringConstants = modelFile.component.stringConstants.map { doubleTab + $0 }.joined(separator: "\n")
         let declarations = modelFile.component.declarations.map { singleTab + $0 }.joined(separator: "\n")
-        let initialisers = modelFile.component.initialisers.map { doubleTab + $0 }.joined(separator: "\n")
+        let initialisers = modelFile.component.initialisers.map {
+            var propertiesName = $0.components(separatedBy: " ")[0]
+            let comment = doubleTab + "try container.encode(" + propertiesName + ", forKey: ." + propertiesName + ")"
+            //try container.encode(transactionAmount, forKey: .transactionAmount)
+            return comment
+        }.joined(separator: "\n")
 
         content = content.replacingOccurrences(of: "{STRING_CONSTANT}", with: stringConstants)
         content = content.replacingOccurrences(of: "{DECLARATION}", with: declarations)
@@ -36,49 +42,7 @@ extension FileGenerator {
             if modelFile.configuration?.shouldGenerateInitMethod == true {
                 let assignment = modelFile.component.initialiserFunctionComponent.map { doubleTab + $0.assignmentString }.joined(separator: "\n")
                 let functionParameters = modelFile.component.initialiserFunctionComponent.map { $0.functionParameter }.joined(separator: ", ")
-                let initialiserFunctionStatement = "\n\(singleTab)init (\(functionParameters)) {"
-                content = content.replacingOccurrences(of: "{INITIALIZER_FUNCTION_DECLRATION}", with: initialiserFunctionStatement)
-                content = content.replacingOccurrences(of: "{INITIALISER_FUNCTION_ASSIGNMENT}", with: assignment)
-                content = content.replacingOccurrences(of: "{INITIALISER_FUNCTION_END}", with: "\(singleTab)}\n")
-            }
-        } else {
-            content = content.replacingOccurrences(of: "{REQUIRED}", with: "")
-            content = content.replacingOccurrences(of: "{INITIALIZER_FUNCTION_DECLRATION}", with: "")
-            content = content.replacingOccurrences(of: "{INITIALISER_FUNCTION_ASSIGNMENT}", with: "")
-            content = content.replacingOccurrences(of: "{INITIALISER_FUNCTION_END}", with: "")
-        }
-        return content
-    }
-
-    
-    static func generateClassFileContentWith(_ modelFile: ModelFile, configuration: ModelGenerationConfiguration) -> String {
-        var content = try! loadFileWith("ClassBaseTemplate")
-        let singleTab = "  ", doubleTab = "    "
-        content = content.replacingOccurrences(of: "{OBJECT_NAME}", with: modelFile.fileName)
-        content = content.replacingOccurrences(of: "{DATE}", with: todayDateString())
-        content = content.replacingOccurrences(of: "{OBJECT_KIND}", with: modelFile.type.rawValue)
-
-        if let authorName = configuration.authorName {
-            content = content.replacingOccurrences(of: "__NAME__", with: authorName)
-        }
-        if let companyName = configuration.companyName {
-            content = content.replacingOccurrences(of: "__MyCompanyName__", with: companyName)
-        }
-
-        let stringConstants = modelFile.component.stringConstants.map { doubleTab + $0 }.joined(separator: "\n")
-        let declarations = modelFile.component.declarations.map { singleTab + $0 }.joined(separator: "\n")
-        let initialisers = modelFile.component.initialisers.map { doubleTab + $0 }.joined(separator: "\n")
-
-        content = content.replacingOccurrences(of: "{STRING_CONSTANT}", with: stringConstants)
-        content = content.replacingOccurrences(of: "{DECLARATION}", with: declarations)
-        content = content.replacingOccurrences(of: "{INITIALIZER}", with: initialisers)
-
-        if modelFile.type == .classType {
-            content = content.replacingOccurrences(of: "{REQUIRED}", with: "required ")
-            if modelFile.configuration?.shouldGenerateInitMethod == true {
-                let assignment = modelFile.component.initialiserFunctionComponent.map { doubleTab + $0.assignmentString }.joined(separator: "\n")
-                let functionParameters = modelFile.component.initialiserFunctionComponent.map { $0.functionParameter }.joined(separator: ", ")
-                let initialiserFunctionStatement = "\n\(singleTab)init (\(functionParameters)) {"
+                let initialiserFunctionStatement = "\n\(singleTab)internal init (\(functionParameters)) {"
                 content = content.replacingOccurrences(of: "{INITIALIZER_FUNCTION_DECLRATION}", with: initialiserFunctionStatement)
                 content = content.replacingOccurrences(of: "{INITIALISER_FUNCTION_ASSIGNMENT}", with: assignment)
                 content = content.replacingOccurrences(of: "{INITIALISER_FUNCTION_END}", with: "\(singleTab)}\n")
@@ -87,9 +51,45 @@ extension FileGenerator {
         return content
     }
     
+    static func generateResponseCodableFileContentWith(_ modelFile: ModelFile, configuration: ModelGenerationConfiguration) -> String {
+        var content = try! loadFileWith("CodableResponseTemplate")
+        let singleTab = "  ", doubleTab = "    "
+        content = content.replacingOccurrences(of: "{OBJECT_NAME}", with: modelFile.fileName)
+        content = content.replacingOccurrences(of: "{DATE}", with: todayDateString())
+        content = content.replacingOccurrences(of: "{OBJECT_KIND}", with: modelFile.type.rawValue)
+
+        if let authorName = configuration.authorName {
+            content = content.replacingOccurrences(of: "__NAME__", with: authorName)
+        }
+        if let companyName = configuration.companyName {
+            content = content.replacingOccurrences(of: "__MyCompanyName__", with: companyName)
+        }
+
+        let stringConstants = modelFile.component.stringConstants.map { doubleTab + $0 }.joined(separator: "\n")
+        let declarations = modelFile.component.declarations.map { singleTab + $0 }.joined(separator: "\n")
+        let initialisers = modelFile.component.initialisers.map { doubleTab + $0 }.joined(separator: "\n")
+
+        content = content.replacingOccurrences(of: "{STRING_CONSTANT}", with: stringConstants)
+        content = content.replacingOccurrences(of: "{DECLARATION}", with: declarations)
+        content = content.replacingOccurrences(of: "{INITIALIZER}", with: initialisers)
+
+        if modelFile.type == .classType {
+            content = content.replacingOccurrences(of: "{REQUIRED}", with: "required ")
+            if modelFile.configuration?.shouldGenerateInitMethod == true {
+                let assignment = modelFile.component.initialiserFunctionComponent.map { doubleTab + $0.assignmentString }.joined(separator: "\n")
+                let functionParameters = modelFile.component.initialiserFunctionComponent.map { $0.functionParameter }.joined(separator: ", ")
+                let initialiserFunctionStatement = "\n\(singleTab)init (\(functionParameters)) {"
+                content = content.replacingOccurrences(of: "{INITIALIZER_FUNCTION_DECLRATION}", with: initialiserFunctionStatement)
+                content = content.replacingOccurrences(of: "{INITIALISER_FUNCTION_ASSIGNMENT}", with: assignment)
+                content = content.replacingOccurrences(of: "{INITIALISER_FUNCTION_END}", with: "\(singleTab)}\n")
+            }
+        }
+        return content
+    }
     
-    static func generateStructFileContentWith(_ modelFile: ModelFile, configuration: ModelGenerationConfiguration) -> String {
-        var content = try! loadFileWith("StructBaseTemplate")
+    
+    static func generateUIModelFileContentWith(_ modelFile: ModelFile, configuration: ModelGenerationConfiguration) -> String {
+        var content = try! loadFileWith("UIModelBaseTemplate")
         let singleTab = "  ", doubleTab = "    ", singleSpace = " ", newLine = "\n"
         content = content.replacingOccurrences(of: "{OBJECT_NAME}", with: modelFile.fileName)
         content = content.replacingOccurrences(of: "{DATE}", with: todayDateString())
@@ -191,3 +191,58 @@ extension FileGenerator {
         return formatter.string(from: Date())
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    static func generateFileContentWith(_ modelFile: ModelFile, configuration: ModelGenerationConfiguration) -> String {
+//        var content = try! loadFileWith("BaseTemplate")
+//        let singleTab = "  ", doubleTab = "    "
+//        content = content.replacingOccurrences(of: "{OBJECT_NAME}", with: modelFile.fileName)
+//        content = content.replacingOccurrences(of: "{DATE}", with: todayDateString())
+//        content = content.replacingOccurrences(of: "{OBJECT_KIND}", with: modelFile.type.rawValue)
+//
+//        if let authorName = configuration.authorName {
+//            content = content.replacingOccurrences(of: "__NAME__", with: authorName)
+//        }
+//        if let companyName = configuration.companyName {
+//            content = content.replacingOccurrences(of: "__MyCompanyName__", with: companyName)
+//        }
+//
+//        let stringConstants = modelFile.component.stringConstants.map { doubleTab + $0 }.joined(separator: "\n")
+//        let declarations = modelFile.component.declarations.map { singleTab + $0 }.joined(separator: "\n")
+//        let initialisers = modelFile.component.initialisers.map { doubleTab + $0 }.joined(separator: "\n")
+//
+//        content = content.replacingOccurrences(of: "{STRING_CONSTANT}", with: stringConstants)
+//        content = content.replacingOccurrences(of: "{DECLARATION}", with: declarations)
+//        content = content.replacingOccurrences(of: "{INITIALIZER}", with: initialisers)
+//
+//        if modelFile.type == .classType {
+//            content = content.replacingOccurrences(of: "{REQUIRED}", with: "required ")
+//            if modelFile.configuration?.shouldGenerateInitMethod == true {
+//                let assignment = modelFile.component.initialiserFunctionComponent.map { doubleTab + $0.assignmentString }.joined(separator: "\n")
+//                let functionParameters = modelFile.component.initialiserFunctionComponent.map { $0.functionParameter }.joined(separator: ", ")
+//                let initialiserFunctionStatement = "\n\(singleTab)init (\(functionParameters)) {"
+//                content = content.replacingOccurrences(of: "{INITIALIZER_FUNCTION_DECLRATION}", with: initialiserFunctionStatement)
+//                content = content.replacingOccurrences(of: "{INITIALISER_FUNCTION_ASSIGNMENT}", with: assignment)
+//                content = content.replacingOccurrences(of: "{INITIALISER_FUNCTION_END}", with: "\(singleTab)}\n")
+//            }
+//        } else {
+//            content = content.replacingOccurrences(of: "{REQUIRED}", with: "")
+//            content = content.replacingOccurrences(of: "{INITIALIZER_FUNCTION_DECLRATION}", with: "")
+//            content = content.replacingOccurrences(of: "{INITIALISER_FUNCTION_ASSIGNMENT}", with: "")
+//            content = content.replacingOccurrences(of: "{INITIALISER_FUNCTION_END}", with: "")
+//        }
+//        return content
+//    }
+
+    
