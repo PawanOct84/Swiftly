@@ -138,21 +138,11 @@ extension MainViewController: SideMenuViewControllerDelegate {
             // About us
             self.showViewController(viewController: UINavigationController.self, storyboardId: "AboutusNavID")
         case 3:
-            // Terms of use
-            self.showViewController(viewController: UINavigationController.self, storyboardId: "TermOfUseNavID")
-            // Books
-           // self.showViewController(viewController: BooksViewController.self, storyboardId: "BooksVCID")
-        case 4:
-            print("hii")
             self.showViewController(viewController: UINavigationController.self, storyboardId: "SettingsNavID")
-            // Profile
-//            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-//            let profileModalVC = storyboard.instantiateViewController(withIdentifier: "ProfileModalID") as? ProfileViewController
-//            present(profileModalVC!, animated: true, completion: nil)
-        case 5:
-            // Settings
+        case 4:
             SKStoreReviewController.requestReview()
-        
+        case 5:
+            self.showViewController(viewController: UINavigationController.self, storyboardId: "TermOfUseNavID")
         default:
             break
         }
