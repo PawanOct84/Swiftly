@@ -17,9 +17,9 @@ class TutorialVC: UIViewController {
     @IBOutlet var sideMenuBtn: UIBarButtonItem!
     
     //MARK: Properties
-    let arrTitle = ["ABC","ABC","ABC"]
-    let arrSubTitle = ["XYZ","XYZ","XYZ"]
-    let arrImg = [#imageLiteral(resourceName: "logo_transparent"),#imageLiteral(resourceName: "logo_transparent"),#imageLiteral(resourceName: "logo_transparent")]
+    let arrTitle = ["Landing View","JSON View","Configuration View","Report View"]
+    let arrSubTitle = ["User can Input and Validate JSON.","User View JSON and Choose the structure of the Model.","The user can view proposed models and change types of properties.","The user can view and export generated swift models."]
+    let arrImg = ["tut_1","tut_2","tut_3","tut_4",]
 
     //MARK: Life Cycle
     override func viewDidLoad() {
@@ -36,7 +36,7 @@ class TutorialVC: UIViewController {
         self.collView.delegate = self
         self.collView.dataSource = self
         
-        self.pgControl.drawer = JumpDrawer(numberOfPages: 3, height: 10, width: 10, space: 5, raduis: 5, currentItem: 0, indicatorColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), dotsColor: #colorLiteral(red: 0.1411764706, green: 0.18431372549, blue: 0.29019607843, alpha: 1), isBordered: false, borderColor: .clear, borderWidth: 0, indicatorBorderColor: .clear, indicatorBorderWidth: 0)
+        self.pgControl.drawer = JumpDrawer(numberOfPages: arrTitle.count, height: 10, width: 10, space: 5, raduis: 5, currentItem: 0, indicatorColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), dotsColor: #colorLiteral(red: 0.1411764706, green: 0.18431372549, blue: 0.29019607843, alpha: 1), isBordered: false, borderColor: .clear, borderWidth: 0, indicatorBorderColor: .clear, indicatorBorderWidth: 0)
         
     }
 }
@@ -55,7 +55,7 @@ extension TutorialVC {
         if nextItem.row < arrTitle.count {
             self.collView.scrollToItem(at: nextItem, at: .left, animated: true)
             pgControl.setPage(nextItem.row)
-            if nextItem.row == 2{
+            if nextItem.row == (arrTitle.count - 1){
                 self.btnSuivant.setTitle("END", for: .normal)
             }
         } else {
@@ -75,7 +75,7 @@ extension TutorialVC: UICollectionViewDelegate {
 //MARK: UICollectionViewDataSource
 extension TutorialVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return arrTitle.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -83,7 +83,7 @@ extension TutorialVC: UICollectionViewDataSource {
         cell.lblTitle.text = arrTitle[indexPath.row]
         cell.lblSubTitle.text = arrSubTitle[indexPath.row]
         UIView.transition(with: cell.img, duration: 2, options: .curveEaseInOut) {
-            cell.img.image = self.arrImg[indexPath.row]
+            cell.img.image = UIImage(named:self.arrImg[indexPath.row])
         } completion: { (finished) in
             
         }
@@ -93,7 +93,7 @@ extension TutorialVC: UICollectionViewDataSource {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let pg = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
         pgControl.setPage(pg)
-        if pg == 2 {
+        if pg == (arrTitle.count - 1) {
             self.btnSuivant.setTitle("END", for: .normal)
         } else {
             self.btnSuivant.setTitle("NEXT", for: .normal)
