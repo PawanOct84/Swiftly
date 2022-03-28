@@ -1,0 +1,6 @@
+${PODS_ROOT}/Target Support Files/Pods-Swiftly/Pods-Swiftly-frameworks.sh
+${BUILT_PRODUCTS_DIR}/AdvancedPageControl/AdvancedPageControl.framework
+${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework
+${BUILT_PRODUCTS_DIR}/OnboardKit/OnboardKit.framework
+${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework
+${BUILT_PRODUCTS_DIR}/Toaster/Toaster.framework
