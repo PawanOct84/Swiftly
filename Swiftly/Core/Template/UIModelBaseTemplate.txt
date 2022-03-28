@@ -1,0 +1,13 @@
+//
+//  {OBJECT_NAME}.swift
+//
+//  Created by __NAME__ on {DATE}
+//  Copyright (c) __MyCompanyName__. All rights reserved.
+//
+
+import Foundation
+
+public struct {OBJECT_NAME}UIModel {
+
+    {DECLARATION}
+}

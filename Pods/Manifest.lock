@@ -1,0 +1,32 @@
+PODS:
+  - AdvancedPageControl (0.9.0)
+  - Eureka (5.3.5)
+  - OnboardKit (1.5.0)
+  - SwiftyJSON (5.0.1)
+  - Toaster (2.3.0)
+
+DEPENDENCIES:
+  - AdvancedPageControl
+  - Eureka
+  - OnboardKit
+  - SwiftyJSON
+  - Toaster
+
+SPEC REPOS:
+  trunk:
+    - AdvancedPageControl
+    - Eureka
+    - OnboardKit
+    - SwiftyJSON
+    - Toaster
+
+SPEC CHECKSUMS:
+  AdvancedPageControl: 39e3b32b00b2d324c534f8e17cc6c5be9abe84b7
+  Eureka: 7b39a479d074620d43028a0e2bfc3e0d667724df
+  OnboardKit: 73a4e9c9a1ae88afee0514ac3f2bc4f82126b66e
+  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
+  Toaster: c3473963c78e8cabbf6ea6f11ad0fdaae6f54987
+
+PODFILE CHECKSUM: c43534c92e4a978073b5acbb1d1f1c792f93f410
+
+COCOAPODS: 1.11.2

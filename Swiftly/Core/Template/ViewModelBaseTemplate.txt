@@ -1,0 +1,16 @@
+//
+//  {OBJECT_NAME}.swift
+//
+//  Created by __NAME__ on {DATE}
+//  Copyright (c) __MyCompanyName__. All rights reserved.
+//
+
+import Foundation
+
+public {OBJECT_KIND} {OBJECT_NAME}ViewModel {
+
+    {DECLARATION}
+    
+   var obj{OBJECT_NAME}UIModel={OBJECT_NAME}UIModel({INITIALIZER_MODEL_UI_MODEL})
+    
+}
